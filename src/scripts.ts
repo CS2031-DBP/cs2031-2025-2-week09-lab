@@ -1,14 +1,17 @@
+
 const button: HTMLElement | null = document.getElementById('button');
-const form: HTMLElement | null = document.getElementById('form');
 
-let count: number = 0;
+const fetching = () => {
+  fetch('https://jsonplaceholder.typicode.com/posts/1')
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+    })
+}
 
-button?.addEventListener('click', () => {
-  console.log(count++);
-});
-
-form?.addEventListener('submit', (e) => {
-  e.preventDefault();
-  console.log('Form submitted');
+button?.addEventListener('click', async () => {
+  fetching();
 });
 

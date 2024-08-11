@@ -8,19 +8,20 @@
   <link rel="stylesheet" href="./output.css">
 </head>
 
-<body>
-  <main class="w-full h-[100vh] bg-slate-400 flex justify-center items-center">
-    <article class="w-4/5 h-4/5 bg-slate-200 rounded-xl px-10 py-4 flex flex-col items-center">
+<body class="bg-slate-400">
+  <main class="w-full min-h-[100vh] flex justify-center items-center">
+    <article
+      class="w-full sm:w-4/5 md:w-3/5 lg:w-2/5 bg-slate-200 sm:rounded-xl sm:my-5 px-10 py-4 flex flex-col items-center">
       <h1 class="text-2xl font-bold mb-3">Register Form</h1>
-      <form>
-        <section class="w-full flex justify-between">
+      <form id="form">
+        <section class="w-full sm:flex justify-between">
           <div class="mr-2">
             <label for="firstname">Firstname: </label>
             <input type="text" name="firstname" id="firstname" required>
           </div>
           <div>
-            <label for="lastnmane">Lastname: </label>
-            <input type="text" name="lastnmane" id="lastnmane" required>
+            <label for="lastname">Lastname: </label>
+            <input type="text" name="lastname" id="lastname" required>
           </div>
         </section>
         <section>
@@ -37,20 +38,22 @@
         </section>
         <section>
           <label for="description">Description:</label>
-          <textarea name="Description" id="description" required></textarea>
+          <textarea name="description" id="description" required></textarea>
         </section>
         <section>
           <label for="password">Password:</label>
           <input type="password" name="password" id="password" required>
         </section>
         <section>
-          <label for="repeat-password">Repeat Password:</label>
-          <input type="password" name="repeat-password" id="repeat-password" required>
+          <label for="repeatPassword">Repeat Password:</label>
+          <input type="password" name="repeatPassword" id="repeatPassword" required>
         </section>
         <section class="w-full flex justify-center">
-          <button id="button" class="bg-gray-500 px-10 mt-1 py-1 rounded-full text-white">Submit</button>
+          <button id="button" class="bg-gray-500 px-10 mt-1 py-1 rounded-full text-white font-bold">Submit</button>
         </section>
       </form>
+
+      <aside class="mt-5" id="result"></aside>
     </article>
   </main>
 

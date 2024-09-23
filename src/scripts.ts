@@ -1,5 +1,3 @@
-// declare const axios: any;
-
 /* 1. Extraer los valores de los campos */
 const form: HTMLFormElement | null = document.getElementById('form') as HTMLFormElement;
 const firstname: HTMLInputElement | null = document.getElementById('firstname') as HTMLInputElement;

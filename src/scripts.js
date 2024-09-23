@@ -1,5 +1,4 @@
 "use strict";
-// declare const axios: any;
 /* 1. Extraer los valores de los campos */
 const form = document.getElementById('form');
 const firstname = document.getElementById('firstname');

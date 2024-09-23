@@ -1,3 +1,10 @@
+import {
+  axiosGet,
+  axiosPost,
+  axiosPut,
+  axiosDelete
+} from './api.js'
+
 /* 1. Extraer los valores de los campos */
 const form: HTMLFormElement | null = document.getElementById('form') as HTMLFormElement;
 const firstname: HTMLInputElement | null = document.getElementById('firstname') as HTMLInputElement;
@@ -101,3 +108,59 @@ form?.addEventListener('submit', (e) => {
     <p><b>Password:</b> ${user.password}</p>
   `;
 });
+
+// SESIÓN 2
+// Async/Await
+
+// Función pesada que demora 2 segundos
+function heavy(): Promise<string> {
+  const promise = new Promise<string>((resolve) => {
+    setTimeout(() => {
+      resolve(`heavy process`);
+    }, 2000);
+  });
+  return promise;
+}
+
+// Función normal que llama a la función pesada
+function callHeavy(): void {
+  const result = heavy();
+  console.log(result);
+}
+
+// callHeavy();
+
+// Función asíncrona que llama a la función pesada
+async function callAsyncHeavy(): Promise<any> {
+  const result = await heavy();
+  console.log(result);
+}
+
+// callAsyncHeavy();
+
+
+// Try/Catch
+function division(n: number, d: number): number {
+  if (d === 0) { throw new Error("Ops! Division by 0"); }
+  return n / d;
+}
+
+function executeDivision(): void {
+  try {
+    const result = division(0, 0);
+    console.log(result);
+  } catch (error: any) {
+    console.error(error.message);
+  }
+}
+
+// executeDivision();
+
+
+// Consumo de APIs con Axios
+//axiosGet();
+//axiosPost();
+//axiosPut();
+//axiosDelete();
+
+

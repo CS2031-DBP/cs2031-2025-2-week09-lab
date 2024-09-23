@@ -1,4 +1,3 @@
-"use strict";
 /* 1. Extraer los valores de los campos */
 const form = document.getElementById('form');
 const firstname = document.getElementById('firstname');
@@ -77,3 +76,49 @@ form === null || form === void 0 ? void 0 : form.addEventListener('submit', (e) 
     <p><b>Password:</b> ${user.password}</p>
   `;
 });
+// SESIÓN 2
+// Async/Await
+// Función pesada que demora 2 segundos
+function heavy() {
+    const promise = new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(`heavy process`);
+        }, 2000);
+    });
+    return promise;
+}
+// Función normal que llama a la función pesada
+function callHeavy() {
+    const result = heavy();
+    console.log(result);
+}
+// callHeavy();
+// Función asíncrona que llama a la función pesada
+async function callAsyncHeavy() {
+    const result = await heavy();
+    console.log(result);
+}
+// callAsyncHeavy();
+// Try/Catch
+function division(n, d) {
+    if (d === 0) {
+        throw new Error("Ops! Division by 0");
+    }
+    return n / d;
+}
+function executeDivision() {
+    try {
+        const result = division(0, 0);
+        console.log(result);
+    }
+    catch (error) {
+        console.error(error.message);
+    }
+}
+export {};
+// executeDivision();
+// Consumo de APIs con Axios
+//axiosGet();
+//axiosPost();
+//axiosPut();
+//axiosDelete();

@@ -1,8 +1,6 @@
 import {
-  axiosGet,
-  axiosPost,
-  axiosPut,
-  axiosDelete
+  getStudents,
+  postStudent
 } from './api.js'
 
 /* 1. Extraer los valores de los campos */
@@ -18,7 +16,7 @@ const repeatPassword: HTMLInputElement | null = document.getElementById('repeatP
 const result: HTMLElement | null = document.getElementById('result') as HTMLElement;
 
 /* 2. Crea una interfaz con la forma y tipo de datos de los campos del formulario */
-interface User {
+interface Student {
   firstname: string;
   lastname: string;
   email: string;
@@ -83,7 +81,7 @@ form?.addEventListener('submit', (e) => {
     return;
   }
 
-  const user: User = {
+  const student: Student = {
     firstname: firstname?.value,
     lastname: lastname?.value,
     email: email?.value,
@@ -94,73 +92,27 @@ form?.addEventListener('submit', (e) => {
   }
 
   /* 5. Imprimir en consola los datos rellenados*/
-  console.log(user);
+  // console.log(student);
 
   /* 6. Muestra los datos rellenados en el documento HTML */
   result.innerHTML = `
-    <h2 class="text-xl font-bold">User Info</h2>
-    <p><b>Firstname:</b> ${user.firstname}</p>
-    <p><b>Lastname:</b> ${user.lastname}</p>
-    <p><b>Email:</b> ${user.email}</p>
-    <p><b>Phone:</b> ${user.phone}</p>
-    <p><b>Age:</b> ${user.age}</p>
-    <p><b>Description:</b> ${user.description}</p>
-    <p><b>Password:</b> ${user.password}</p>
+    <h2 class="text-xl font-bold">student Info</h2>
+    <p><b>Firstname:</b> ${student.firstname}</p>
+    <p><b>Lastname:</b> ${student.lastname}</p>
+    <p><b>Email:</b> ${student.email}</p>
+    <p><b>Phone:</b> ${student.phone}</p>
+    <p><b>Age:</b> ${student.age}</p>
+    <p><b>Description:</b> ${student.description}</p>
+    <p><b>Password:</b> ${student.password}</p>
   `;
-});
 
-// SESIÓN 2
-// Async/Await
-
-// Función pesada que demora 2 segundos
-function heavy(): Promise<string> {
-  const promise = new Promise<string>((resolve) => {
-    setTimeout(() => {
-      resolve(`heavy process`);
-    }, 2000);
-  });
-  return promise;
-}
-
-// Función normal que llama a la función pesada
-function callHeavy(): void {
-  const result = heavy();
-  console.log(result);
-}
-
-// callHeavy();
-
-// Función asíncrona que llama a la función pesada
-async function callAsyncHeavy(): Promise<any> {
-  const result = await heavy();
-  console.log(result);
-}
-
-// callAsyncHeavy();
-
-
-// Try/Catch
-function division(n: number, d: number): number {
-  if (d === 0) { throw new Error("Ops! Division by 0"); }
-  return n / d;
-}
-
-function executeDivision(): void {
-  try {
-    const result = division(0, 0);
-    console.log(result);
-  } catch (error: any) {
-    console.error(error.message);
+  /* 7. Envia los datos al backend */
+  async function callPostStudent(student: Student) {
+    const res = await postStudent(student);
+    console.log(res);
   }
-}
 
-// executeDivision();
-
-
-// Consumo de APIs con Axios
-//axiosGet();
-//axiosPost();
-//axiosPut();
-//axiosDelete();
+  callPostStudent(student);
+});
 
 

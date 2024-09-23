@@ -1,3 +1,4 @@
+import { postStudent } from './api.js';
 /* 1. Extraer los valores de los campos */
 const form = document.getElementById('form');
 const firstname = document.getElementById('firstname');
@@ -53,7 +54,7 @@ form === null || form === void 0 ? void 0 : form.addEventListener('submit', (e) 
         alert('Passwords do not match');
         return;
     }
-    const user = {
+    const student = {
         firstname: firstname === null || firstname === void 0 ? void 0 : firstname.value,
         lastname: lastname === null || lastname === void 0 ? void 0 : lastname.value,
         email: email === null || email === void 0 ? void 0 : email.value,
@@ -63,62 +64,22 @@ form === null || form === void 0 ? void 0 : form.addEventListener('submit', (e) 
         password: password === null || password === void 0 ? void 0 : password.value
     };
     /* 5. Imprimir en consola los datos rellenados*/
-    console.log(user);
+    // console.log(student);
     /* 6. Muestra los datos rellenados en el documento HTML */
     result.innerHTML = `
-    <h2 class="text-xl font-bold">User Info</h2>
-    <p><b>Firstname:</b> ${user.firstname}</p>
-    <p><b>Lastname:</b> ${user.lastname}</p>
-    <p><b>Email:</b> ${user.email}</p>
-    <p><b>Phone:</b> ${user.phone}</p>
-    <p><b>Age:</b> ${user.age}</p>
-    <p><b>Description:</b> ${user.description}</p>
-    <p><b>Password:</b> ${user.password}</p>
+    <h2 class="text-xl font-bold">student Info</h2>
+    <p><b>Firstname:</b> ${student.firstname}</p>
+    <p><b>Lastname:</b> ${student.lastname}</p>
+    <p><b>Email:</b> ${student.email}</p>
+    <p><b>Phone:</b> ${student.phone}</p>
+    <p><b>Age:</b> ${student.age}</p>
+    <p><b>Description:</b> ${student.description}</p>
+    <p><b>Password:</b> ${student.password}</p>
   `;
+    /* 7. Envia los datos al backend */
+    async function callPostStudent(student) {
+        const res = await postStudent(student);
+        console.log(res);
+    }
+    callPostStudent(student);
 });
-// SESIÓN 2
-// Async/Await
-// Función pesada que demora 2 segundos
-function heavy() {
-    const promise = new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(`heavy process`);
-        }, 2000);
-    });
-    return promise;
-}
-// Función normal que llama a la función pesada
-function callHeavy() {
-    const result = heavy();
-    console.log(result);
-}
-// callHeavy();
-// Función asíncrona que llama a la función pesada
-async function callAsyncHeavy() {
-    const result = await heavy();
-    console.log(result);
-}
-// callAsyncHeavy();
-// Try/Catch
-function division(n, d) {
-    if (d === 0) {
-        throw new Error("Ops! Division by 0");
-    }
-    return n / d;
-}
-function executeDivision() {
-    try {
-        const result = division(0, 0);
-        console.log(result);
-    }
-    catch (error) {
-        console.error(error.message);
-    }
-}
-export {};
-// executeDivision();
-// Consumo de APIs con Axios
-//axiosGet();
-//axiosPost();
-//axiosPut();
-//axiosDelete();

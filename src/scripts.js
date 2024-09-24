@@ -1,4 +1,4 @@
-import { getStudents, postStudent } from './api.js';
+import { getStudents, postStudent, deleteStudent } from './api.js';
 /* 1. Extraer los valores de los campos */
 const form = document.getElementById('form');
 const firstname = document.getElementById('firstname');
@@ -55,6 +55,7 @@ form === null || form === void 0 ? void 0 : form.addEventListener('submit', (e) 
         return;
     }
     const student = {
+        id: null,
         firstname: firstname === null || firstname === void 0 ? void 0 : firstname.value,
         lastname: lastname === null || lastname === void 0 ? void 0 : lastname.value,
         email: email === null || email === void 0 ? void 0 : email.value,
@@ -87,18 +88,33 @@ form === null || form === void 0 ? void 0 : form.addEventListener('submit', (e) 
 const buttonStudents = document.getElementById('buttonStudents');
 const resultStudents = document.getElementById('resultStudents');
 buttonStudents === null || buttonStudents === void 0 ? void 0 : buttonStudents.addEventListener('click', async () => {
-    console.log("Click");
     const students = await getStudents();
+    console.log(students);
     resultStudents.innerHTML = `
     ${students.map((student) => `
-      <li class="bg-slate-300 p-4 rounded-xl mb-2">
-        <p><b>Firstname:</b> ${student.firstname}</p>
-        <p><b>Lastname:</b> ${student.lastname}</p>
-        <p><b>Email:</b> ${student.email}</p>
-        <p><b>Phone:</b> ${student.phone}</p>
-        <p><b>Age:</b> ${student.age}</p>
-        <p><b>Description:</b> ${student.description}</p>
+      <li class="bg-slate-300 p-4 rounded-xl mb-2 flex justify-between">
+        <div>
+          <p><b>Firstname:</b> ${student.firstname}</p>
+          <p><b>Lastname:</b> ${student.lastname}</p>
+          <p><b>Email:</b> ${student.email}</p>
+          <p><b>Phone:</b> ${student.phone}</p>
+          <p><b>Age:</b> ${student.age}</p>
+          <p><b>Description:</b> ${student.description}</p>
+        </div>
+        <div class="flex flex-col justify-between">
+          <a href="index.html"><button class=" bg-slate-200 px-4 py-1 rounded-full hover:bg-slate-300">Edit</button></a>
+          <button class="delete-button bg-slate-200 px-4 py-1 rounded-full hover:bg-slate-300" id="${student.id}">Delete</button>
+        </div>
       </li>
     `).join('')}
   `;
+    // Añadir evento click a los botones de eliminar
+    document.querySelectorAll('.delete-button').forEach(button => {
+        button.addEventListener('click', (e) => {
+            const studentId = e.target.getAttribute('id');
+            if (studentId) {
+                deleteStudent(Number(studentId)); // Asegúrate de que deleteStudent está definida
+            }
+        });
+    });
 });

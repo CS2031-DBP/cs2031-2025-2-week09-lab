@@ -1,6 +1,7 @@
 import {
   getStudents,
-  postStudent
+  postStudent,
+  deleteStudent
 } from './api.js'
 
 /* 1. Extraer los valores de los campos */
@@ -17,6 +18,7 @@ const result: HTMLElement | null = document.getElementById('result') as HTMLElem
 
 /* 2. Crea una interfaz con la forma y tipo de datos de los campos del formulario */
 interface Student {
+  id: number | null;
   firstname: string;
   lastname: string;
   email: string;
@@ -82,6 +84,7 @@ form?.addEventListener('submit', (e) => {
   }
 
   const student: Student = {
+    id: null,
     firstname: firstname?.value,
     lastname: lastname?.value,
     email: email?.value,
@@ -119,21 +122,37 @@ form?.addEventListener('submit', (e) => {
 const buttonStudents: HTMLElement | null = document.getElementById('buttonStudents') as HTMLElement;
 const resultStudents: HTMLElement | null = document.getElementById('resultStudents') as HTMLElement;
 
-buttonStudents?.addEventListener('click', async () => {
-  console.log("Click");
 
+buttonStudents?.addEventListener('click', async () => {
   const students = await getStudents();
+  console.log(students);
 
   resultStudents.innerHTML = `
     ${students.map((student: Student) => `
-      <li class="bg-slate-300 p-4 rounded-xl mb-2">
-        <p><b>Firstname:</b> ${student.firstname}</p>
-        <p><b>Lastname:</b> ${student.lastname}</p>
-        <p><b>Email:</b> ${student.email}</p>
-        <p><b>Phone:</b> ${student.phone}</p>
-        <p><b>Age:</b> ${student.age}</p>
-        <p><b>Description:</b> ${student.description}</p>
+      <li class="bg-slate-300 p-4 rounded-xl mb-2 flex justify-between">
+        <div>
+          <p><b>Firstname:</b> ${student.firstname}</p>
+          <p><b>Lastname:</b> ${student.lastname}</p>
+          <p><b>Email:</b> ${student.email}</p>
+          <p><b>Phone:</b> ${student.phone}</p>
+          <p><b>Age:</b> ${student.age}</p>
+          <p><b>Description:</b> ${student.description}</p>
+        </div>
+        <div class="flex flex-col justify-between">
+          <a href="index.html"><button class=" bg-slate-200 px-4 py-1 rounded-full hover:bg-slate-300">Edit</button></a>
+          <button class="delete-button bg-slate-200 px-4 py-1 rounded-full hover:bg-slate-300" id="${student.id}">Delete</button>
+        </div>
       </li>
     `).join('')}
   `;
-})
+
+  // Añadir evento click a los botones de eliminar
+  document.querySelectorAll('.delete-button').forEach(button => {
+    button.addEventListener('click', (e) => {
+      const studentId = (e.target as HTMLButtonElement).getAttribute('id');
+      if (studentId) {
+        deleteStudent(Number(studentId)); // Asegúrate de que deleteStudent está definida
+      }
+    });
+  });
+});

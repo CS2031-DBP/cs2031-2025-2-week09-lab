@@ -25,11 +25,12 @@ export async function postStudent(student) {
 //     console.error(error);
 //   }
 // }
-// export async function axiosDelete(): Promise<any> {
-//   try {
-//     const response = await axios.delete(`${BACKEND_URL}/posts/1`);
-//     console.log(response);
-//   } catch (error: any) {
-//     console.error(error);
-//   }
-// }
+export async function deleteStudent(id) {
+    try {
+        const response = await axios.delete(`${BACKEND_URL}/student/${id}`);
+        return response.data;
+    }
+    catch (error) {
+        console.error(error);
+    }
+}

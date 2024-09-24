@@ -9,13 +9,21 @@
 </head>
 
 <body class="bg-slate-400">
-  <main class="w-full min-h-[100vh] flex justify-center items-center">
+  <nav class="w-full bg-slate-200 py-3 px-4 sm:px-8 flex justify-between items-center">
+    <div class="text-xl">Estudiantes Sparky</div>
+    <ul class="flex">
+      <li class="py-2 px-4 hover:bg-slate-300 rounded-full"><a href="students.html">Estudiantes</a></li>
+      <li class="ml-6 py-2 px-4 hover:bg-slate-300 rounded-full"><a href="index.html">Registro</a></li>
+    </ul>
+  </nav>
+
+  <main class="w-full min-h-[90vh] flex justify-center items-center">
     <article
       class="w-full sm:w-4/5 md:w-3/5 lg:w-2/5 bg-slate-200 sm:rounded-xl sm:my-5 px-10 py-4 flex flex-col items-center">
       <h1 class="text-2xl font-bold mb-3">Register Form</h1>
       <form id="form">
         <section class="w-full sm:flex justify-between">
-          <div class="mr-2">
+          <div class="m-0 sm:mr-2">
             <label for="firstname">Firstname: </label>
             <input type="text" name="firstname" id="firstname" required>
           </div>

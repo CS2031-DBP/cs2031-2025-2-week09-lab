@@ -30,14 +30,14 @@ export async function postStudent(student: Student): Promise<any> {
   }
 }
 
-// export async function axiosPut(): Promise<any> {
-//   try {
-//     const response = await axios.put(`${BACKEND_URL}/posts/1`, putBody);
-//     console.log(response);
-//   } catch (error: any) {
-//     console.error(error);
-//   }
-// }
+export async function updateStudent(id: number, student: Student): Promise<any> {
+  try {
+    const response = await axios.put(`${BACKEND_URL}/student/${id}`, student);
+    return response.data;
+  } catch (error: any) {
+    console.error(error);
+  }
+}
 
 export async function deleteStudent(id: number): Promise<any> {
   try {

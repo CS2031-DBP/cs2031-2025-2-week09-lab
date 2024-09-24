@@ -131,6 +131,7 @@ buttonStudents?.addEventListener('click', async () => {
     ${students.map((student: Student) => `
       <li class="bg-slate-300 p-4 rounded-xl mb-2 flex justify-between">
         <div>
+          <p><b>ID:</b> ${student.id}</p>
           <p><b>Firstname:</b> ${student.firstname}</p>
           <p><b>Lastname:</b> ${student.lastname}</p>
           <p><b>Email:</b> ${student.email}</p>
@@ -139,20 +140,50 @@ buttonStudents?.addEventListener('click', async () => {
           <p><b>Description:</b> ${student.description}</p>
         </div>
         <div class="flex flex-col justify-between">
-          <a href="index.html"><button class=" bg-slate-200 px-4 py-1 rounded-full hover:bg-slate-300">Edit</button></a>
+          <a href="update.html"><button class=" bg-slate-200 px-4 py-1 rounded-full hover:bg-slate-300">Edit</button></a>
           <button class="delete-button bg-slate-200 px-4 py-1 rounded-full hover:bg-slate-300" id="${student.id}">Delete</button>
         </div>
       </li>
     `).join('')}
   `;
 
-  // Añadir evento click a los botones de eliminar
+  /* 9. Eliminar un estudiante por su id */
   document.querySelectorAll('.delete-button').forEach(button => {
     button.addEventListener('click', (e) => {
       const studentId = (e.target as HTMLButtonElement).getAttribute('id');
       if (studentId) {
-        deleteStudent(Number(studentId)); // Asegúrate de que deleteStudent está definida
+        deleteStudent(Number(studentId));
+        alert(`Estudiante con id  ${studentId} eliminado`);
+        window.location.reload();
       }
     });
   });
+});
+
+/* 10. Actualiza un estudiante por su id */
+const formUpdate: HTMLFormElement | null = document.getElementById('form-update') as HTMLFormElement;
+const id: HTMLInputElement | null = document.getElementById('id') as HTMLInputElement;
+
+formUpdate?.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const newStudent: Student = {
+    id: Number(id?.value),
+    firstname: firstname?.value,
+    lastname: lastname?.value,
+    email: email?.value,
+    phone: phone?.value,
+    age: Number(age?.value),
+    description: description?.value,
+    password: password?.value
+  }
+
+  async function callUpdateStudent(student: Student) {
+    const res = await postStudent(student);
+    console.log(res);
+    alert(`Estudiante con id ${student.id} actualizado`);
+    window.location.href = 'students.html';
+  }
+
+  callUpdateStudent(newStudent);
 });

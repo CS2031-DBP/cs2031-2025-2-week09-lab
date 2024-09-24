@@ -17,14 +17,15 @@ export async function postStudent(student) {
         console.error(error);
     }
 }
-// export async function axiosPut(): Promise<any> {
-//   try {
-//     const response = await axios.put(`${BACKEND_URL}/posts/1`, putBody);
-//     console.log(response);
-//   } catch (error: any) {
-//     console.error(error);
-//   }
-// }
+export async function updateStudent(id, student) {
+    try {
+        const response = await axios.put(`${BACKEND_URL}/student/${id}`, student);
+        return response.data;
+    }
+    catch (error) {
+        console.error(error);
+    }
+}
 export async function deleteStudent(id) {
     try {
         const response = await axios.delete(`${BACKEND_URL}/student/${id}`);

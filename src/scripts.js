@@ -94,6 +94,7 @@ buttonStudents === null || buttonStudents === void 0 ? void 0 : buttonStudents.a
     ${students.map((student) => `
       <li class="bg-slate-300 p-4 rounded-xl mb-2 flex justify-between">
         <div>
+          <p><b>ID:</b> ${student.id}</p>
           <p><b>Firstname:</b> ${student.firstname}</p>
           <p><b>Lastname:</b> ${student.lastname}</p>
           <p><b>Email:</b> ${student.email}</p>
@@ -102,19 +103,44 @@ buttonStudents === null || buttonStudents === void 0 ? void 0 : buttonStudents.a
           <p><b>Description:</b> ${student.description}</p>
         </div>
         <div class="flex flex-col justify-between">
-          <a href="index.html"><button class=" bg-slate-200 px-4 py-1 rounded-full hover:bg-slate-300">Edit</button></a>
+          <a href="update.html"><button class=" bg-slate-200 px-4 py-1 rounded-full hover:bg-slate-300">Edit</button></a>
           <button class="delete-button bg-slate-200 px-4 py-1 rounded-full hover:bg-slate-300" id="${student.id}">Delete</button>
         </div>
       </li>
     `).join('')}
   `;
-    // Añadir evento click a los botones de eliminar
+    /* 9. Eliminar un estudiante por su id */
     document.querySelectorAll('.delete-button').forEach(button => {
         button.addEventListener('click', (e) => {
             const studentId = e.target.getAttribute('id');
             if (studentId) {
-                deleteStudent(Number(studentId)); // Asegúrate de que deleteStudent está definida
+                deleteStudent(Number(studentId));
+                alert(`Estudiante con id  ${studentId} eliminado`);
+                window.location.reload();
             }
         });
     });
+});
+/* 10. Actualiza un estudiante por su id */
+const formUpdate = document.getElementById('form-update');
+const id = document.getElementById('id');
+formUpdate === null || formUpdate === void 0 ? void 0 : formUpdate.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const newStudent = {
+        id: Number(id === null || id === void 0 ? void 0 : id.value),
+        firstname: firstname === null || firstname === void 0 ? void 0 : firstname.value,
+        lastname: lastname === null || lastname === void 0 ? void 0 : lastname.value,
+        email: email === null || email === void 0 ? void 0 : email.value,
+        phone: phone === null || phone === void 0 ? void 0 : phone.value,
+        age: Number(age === null || age === void 0 ? void 0 : age.value),
+        description: description === null || description === void 0 ? void 0 : description.value,
+        password: password === null || password === void 0 ? void 0 : password.value
+    };
+    async function callUpdateStudent(student) {
+        const res = await postStudent(student);
+        console.log(res);
+        alert(`Estudiante con id ${student.id} actualizado`);
+        window.location.href = 'students.html';
+    }
+    callUpdateStudent(newStudent);
 });

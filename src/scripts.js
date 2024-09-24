@@ -1,4 +1,4 @@
-import { postStudent } from './api.js';
+import { getStudents, postStudent } from './api.js';
 /* 1. Extraer los valores de los campos */
 const form = document.getElementById('form');
 const firstname = document.getElementById('firstname');
@@ -82,4 +82,23 @@ form === null || form === void 0 ? void 0 : form.addEventListener('submit', (e) 
         console.log(res);
     }
     callPostStudent(student);
+});
+/* 8. Obten los estudiantes del backend */
+const buttonStudents = document.getElementById('buttonStudents');
+const resultStudents = document.getElementById('resultStudents');
+buttonStudents === null || buttonStudents === void 0 ? void 0 : buttonStudents.addEventListener('click', async () => {
+    console.log("Click");
+    const students = await getStudents();
+    resultStudents.innerHTML = `
+    ${students.map((student) => `
+      <li class="bg-slate-300 p-4 rounded-xl mb-2">
+        <p><b>Firstname:</b> ${student.firstname}</p>
+        <p><b>Lastname:</b> ${student.lastname}</p>
+        <p><b>Email:</b> ${student.email}</p>
+        <p><b>Phone:</b> ${student.phone}</p>
+        <p><b>Age:</b> ${student.age}</p>
+        <p><b>Description:</b> ${student.description}</p>
+      </li>
+    `).join('')}
+  `;
 });

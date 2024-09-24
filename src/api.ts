@@ -5,7 +5,7 @@ const BACKEND_URL: string = "http://127.0.0.1:8080"
 export async function getStudents(): Promise<any> {
   try {
     const response = await axios.get(`${BACKEND_URL}/student`);
-    console.log(response.data);
+    return response.data;
   } catch (error: any) {
     console.error(error);
   }

@@ -115,4 +115,25 @@ form?.addEventListener('submit', (e) => {
   callPostStudent(student);
 });
 
+/* 8. Obten los estudiantes del backend */
+const buttonStudents: HTMLElement | null = document.getElementById('buttonStudents') as HTMLElement;
+const resultStudents: HTMLElement | null = document.getElementById('resultStudents') as HTMLElement;
 
+buttonStudents?.addEventListener('click', async () => {
+  console.log("Click");
+
+  const students = await getStudents();
+
+  resultStudents.innerHTML = `
+    ${students.map((student: Student) => `
+      <li class="bg-slate-300 p-4 rounded-xl mb-2">
+        <p><b>Firstname:</b> ${student.firstname}</p>
+        <p><b>Lastname:</b> ${student.lastname}</p>
+        <p><b>Email:</b> ${student.email}</p>
+        <p><b>Phone:</b> ${student.phone}</p>
+        <p><b>Age:</b> ${student.age}</p>
+        <p><b>Description:</b> ${student.description}</p>
+      </li>
+    `).join('')}
+  `;
+})

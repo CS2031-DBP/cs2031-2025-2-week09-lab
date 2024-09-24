@@ -2,7 +2,7 @@ const BACKEND_URL = "http://127.0.0.1:8080";
 export async function getStudents() {
     try {
         const response = await axios.get(`${BACKEND_URL}/student`);
-        console.log(response.data);
+        return response.data;
     }
     catch (error) {
         console.error(error);

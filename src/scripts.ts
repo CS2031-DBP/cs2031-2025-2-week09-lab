@@ -1,7 +1,16 @@
 import { axiosPost, type Student } from "./api.js";
 const form = document.getElementById("form") as HTMLFormElement | null;
-const fields = ["firstname", "lastname", "email", "phone", "age", "description", "password"];
-const [firstname, lastname, email, phone, age, description, password] = fields.map(id => document.getElementById(id) as HTMLInputElement | null);
+const fields = [
+  "firstname",
+  "lastname",
+  "email",
+  "phone",
+  "age",
+  "description",
+  "password",
+];
+const [firstname, lastname, email, phone, age, description, password] =
+  fields.map((id) => document.getElementById(id) as HTMLInputElement | null);
 
 form?.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -14,16 +23,24 @@ form?.addEventListener("submit", (e) => {
     phone: phone?.value || "",
     age: Number.parseInt(age?.value || "0"),
     description: description?.value || "",
-    password: password?.value || ""
-  }
+    password: password?.value || "",
+  };
 
   console.log(student);
 
   async function callPostStudent(student: Student) {
-    const res = await axiosPost(student);
-    console.log(res);
+    try {
+      const res = await axiosPost(student);
+
+      if (res.status === 201) {
+        alert("Student created successfully!");
+        console.log(res);
+      }
+      
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   callPostStudent(student);
-
 });

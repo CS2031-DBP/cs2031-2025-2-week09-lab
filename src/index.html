@@ -1,64 +1,170 @@
-<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario Mejorado</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    />
+    <!-- Librería de íconos -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Demo week 7</title>
-</head>
-
-<body>
-  <nav class="w-full bg-slate-200 py-3 px-4 sm:px-8 flex justify-between items-center"></nav>
-  <div class="text-xl">Estudiantes Sparky</div>
-  <ul class="flex">
-    <li class="ml-6 py-2 px-4 hover:bg-slate-300 rounded-full"><a href="index.html">Registro</a></li>
-  </ul>
-  </nav>
-
-  <main>
-    <article>
-      <h1>Register Form</h1>
+  <body
+    class="bg-cover bg-center min-h-screen flex items-center justify-center"
+    style="background-image: url('../images/paisaje-bosque.jpg')"
+  >
+    <!-- Contenedor principal del formulario -->
+    <main
+      class="bg-white bg-opacity-80 p-8 rounded-lg shadow-2xl w-full max-w-md"
+    >
+      <div class="text-xl font-bold text-center mb-6">
+        Registro de Estudiantes Sparky
+      </div>
       <form id="form">
-        <section>
-          <div>
-            <label for="firstname">Firstname: </label>
-            <input type="text" name="firstname" id="firstname" required>
+        <!-- Primer grupo de inputs -->
+        <section class="mb-4">
+          <div class="mb-4">
+            <label for="firstname" class="block text-gray-700">Nombre:</label>
+            <input
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+              type="text"
+              name="firstname"
+              id="firstname"
+              required
+            />
           </div>
-          <div>
-            <label for="lastname">Lastname: </label>
-            <input type="text" name="lastname" id="lastname" required>
+          <div class="mb-4">
+            <label for="lastname" class="block text-gray-700">Apellido:</label>
+            <input
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+              type="text"
+              name="lastname"
+              id="lastname"
+              required
+            />
           </div>
         </section>
-        <section>
-          <label for="email">Email:</label>
-          <input type="email" name="email" id="email" required>
+
+        <!-- Segundo grupo de inputs -->
+        <section class="mb-4">
+          <div class="mb-4">
+            <label for="email" class="block text-gray-700"
+              >Correo electrónico:</label
+            >
+            <input
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+              type="email"
+              name="email"
+              id="email"
+              required
+            />
+          </div>
+          <div class="mb-4">
+            <label for="phone" class="block text-gray-700">Teléfono:</label>
+            <input
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+              type="text"
+              name="phone"
+              id="phone"
+              required
+            />
+          </div>
         </section>
-        <section>
-          <label for="phone">Phone:</label>
-          <input type="text" name="phone" id="phone" required>
+
+        <!-- Tercer grupo de inputs -->
+        <section class="mb-4">
+          <div class="mb-4">
+            <label for="age" class="block text-gray-700">Edad:</label>
+            <input
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+              type="number"
+              name="age"
+              id="age"
+              required
+            />
+          </div>
+          <div class="mb-4">
+            <label for="description" class="block text-gray-700"
+              >Descripción:</label
+            >
+            <textarea
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+              name="description"
+              id="description"
+              required
+            ></textarea>
+          </div>
         </section>
-        <section>
-          <label for="age">Age:</label>
-          <input type="number" name="age" id="age" required>
+
+        <!-- Grupo de contraseña -->
+        <section class="mb-4">
+          <div class="mb-4">
+            <label for="password" class="block text-gray-700"
+              >Contraseña:</label
+            >
+            <input
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+              type="password"
+              name="password"
+              id="password"
+              required
+            />
+          </div>
+          <div class="mb-4">
+            <label for="repeatPassword" class="block text-gray-700"
+              >Repetir Contraseña:</label
+            >
+            <input
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+              type="password"
+              name="repeatPassword"
+              id="repeatPassword"
+              required
+            />
+          </div>
+          <!-- "Forgot your password?" link -->
+          <div class="text-right">
+            <a href="#" class="text-blue-500 hover:underline text-sm"
+              >¿Olvidaste tu contraseña?</a
+            >
+          </div>
         </section>
-        <section>
-          <label for="description">Description:</label>
-          <textarea name="description" id="description" required></textarea>
+
+        <!-- Checkbox de Términos y Condiciones -->
+        <section class="mb-6">
+          <div class="flex items-center">
+            <input
+              type="checkbox"
+              id="terms"
+              name="terms"
+              class="mr-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              required
+            />
+            <label for="terms" class="text-gray-700 text-sm"
+              >Acepto los
+              <a href="#" class="text-blue-500 hover:underline"
+                >Términos y Condiciones</a
+              ></label
+            >
+          </div>
         </section>
+
+        <!-- Botón de envío con ícono -->
         <section>
-          <label for="password">Password:</label>
-          <input type="password" name="password" id="password" required>
-        </section>
-        <section>
-          <label for="repeatPassword">Repeat Password:</label>
-          <input type="password" name="repeatPassword" id="repeatPassword" required>
-        </section>
-        <section>
-          <button>Submit</button>
+          <button
+            class="w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 transition-colors flex justify-center items-center"
+          >
+            <i class="fas fa-paper-plane mr-2"></i> Enviar
+          </button>
         </section>
       </form>
-    </article>
-  </main>
-</body>
+    </main>
 
+    <script type="module" src="./scripts.js"></script>
+  </body>
 </html>

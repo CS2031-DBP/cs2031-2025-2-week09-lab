@@ -1,4 +1,4 @@
-"use strict";
+import { axiosPost } from "./api.js";
 const form = document.getElementById("form");
 const fields = [
     "firstname",
@@ -10,18 +10,6 @@ const fields = [
     "password",
 ];
 const [firstname, lastname, email, phone, age, description, password] = fields.map((id) => document.getElementById(id));
-const BACKEND_URL = "http://localhost:8080";
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-async function axiosPost(student) {
-    try {
-        const response = await axios.post(`${BACKEND_URL}/student`, student);
-        console.log(response);
-        // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-    }
-    catch (error) {
-        console.error(error);
-    }
-}
 form === null || form === void 0 ? void 0 : form.addEventListener("submit", (e) => {
     e.preventDefault();
     const student = {

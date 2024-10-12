@@ -24,3 +24,15 @@ export async function axiosPost(student: Student): Promise<any> {
     console.error(error);
   }
 }
+
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+export async function axiosGet(): Promise<any> {
+  try {
+    const response = await axios.get(`${BACKEND_URL}/student`);
+    console.log(response);
+    return response.data;
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  } catch (error: any) {
+    console.error(error);
+  }
+}

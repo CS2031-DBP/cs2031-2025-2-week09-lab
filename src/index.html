@@ -5,56 +5,57 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Demo week 7</title>
+  <link rel="stylesheet" href="../build/output.css">
 </head>
 
-<body>
-  <nav class="w-full bg-slate-200 py-3 px-4 sm:px-8 flex justify-between items-center"></nav>
-  <div class="text-xl">Estudiantes Sparky</div>
-  <ul class="flex">
-    <li class="ml-6 py-2 px-4 hover:bg-slate-300 rounded-full"><a href="index.html">Registro</a></li>
-  </ul>
+<body class="bg-gray-100">
+  <nav class="w-full bg-slate-200 py-3 px-4 sm:px-8 flex justify-between items-center">
+    <div class="text-xl">Estudiantes Sparky</div>
+    <ul class="flex">
+      <li class="ml-6 py-2 px-4 hover:bg-slate-300 rounded-full"><a href="index.html">Registro</a></li>
+    </ul>
   </nav>
 
-  <main>
+  <main class="max-w-4xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
     <article>
-      <h1>Register Form</h1>
-      <form id="form">
-        <section>
+      <h1 class="text-2xl font-bold mb-6">Register Form</h1>
+      <form id="form" class="space-y-6">
+        <section class="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div>
-            <label for="firstname">Firstname: </label>
-            <input type="text" name="firstname" id="firstname" required>
+            <label for="firstname" class="block text-sm font-medium text-gray-700">Firstname:</label>
+            <input type="text" name="firstname" id="firstname" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
           </div>
           <div>
-            <label for="lastname">Lastname: </label>
-            <input type="text" name="lastname" id="lastname" required>
+            <label for="lastname" class="block text-sm font-medium text-gray-700">Lastname:</label>
+            <input type="text" name="lastname" id="lastname" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
           </div>
         </section>
         <section>
-          <label for="email">Email:</label>
-          <input type="email" name="email" id="email" required>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email:</label>
+          <input type="email" name="email" id="email" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
         </section>
         <section>
-          <label for="phone">Phone:</label>
-          <input type="text" name="phone" id="phone" required>
+          <label for="phone" class="block text-sm font-medium text-gray-700">Phone:</label>
+          <input type="text" name="phone" id="phone" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
         </section>
         <section>
-          <label for="age">Age:</label>
-          <input type="number" name="age" id="age" required>
+          <label for="age" class="block text-sm font-medium text-gray-700">Age:</label>
+          <input type="number" name="age" id="age" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
         </section>
         <section>
-          <label for="description">Description:</label>
-          <textarea name="description" id="description" required></textarea>
+          <label for="description" class="block text-sm font-medium text-gray-700">Description:</label>
+          <textarea name="description" id="description" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
         </section>
         <section>
-          <label for="password">Password:</label>
-          <input type="password" name="password" id="password" required>
+          <label for="password" class="block text-sm font-medium text-gray-700">Password:</label>
+          <input type="password" name="password" id="password" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
         </section>
         <section>
-          <label for="repeatPassword">Repeat Password:</label>
-          <input type="password" name="repeatPassword" id="repeatPassword" required>
+          <label for="repeatPassword" class="block text-sm font-medium text-gray-700">Repeat Password:</label>
+          <input type="password" name="repeatPassword" id="repeatPassword" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
         </section>
         <section>
-          <button>Submit</button>
+          <button type="submit" class="w-full py-2 px-4 bg-indigo-600 text-white font-medium rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Submit</button>
         </section>
       </form>
     </article>

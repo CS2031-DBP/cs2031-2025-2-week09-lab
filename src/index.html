@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Demo week 7</title>
+    <title>Demo DBP Semana 9</title>
+    <link rel="stylesheet" href="output.css" >
   </head>
 
   <body>
@@ -18,50 +19,35 @@
     </ul>
 
     <main>
-      <article>
-        <h1>Register Form</h1>
-        <form id="form">
-          <section>
-            <div>
-              <label for="firstname">Firstname: </label>
-              <input type="text" name="firstname" id="firstname" required />
-            </div>
-            <div>
-              <label for="lastname">Lastname: </label>
-              <input type="text" name="lastname" id="lastname" required />
-            </div>
-          </section>
-          <section>
+      <article class="flex flex-col items-center">
+        <h1 class="font-bold underline bg-red-500 text-4xl">Register Form</h1>
+        <form id="form" class="mt-2 rounded-md border-2 border-black w-96 shadow-xl p-4 bg-slate-400">
+          <section class="flex flex-col gap-1">
+            <label for="firstname">First Name: </label>
+            <input type="text" name="firstname" id="firstname" class="border-2 rounded-md" required />
+            <label for="lastname">Lastname: </label>
+            <input type="text" name="lastname" id="lastname" class="border-2 rounded-md" required />
             <label for="email">Email:</label>
-            <input type="email" name="email" id="email" required />
-          </section>
-          <section>
+            <input type="email" name="email" id="email" class="border-2 rounded-md" required />
             <label for="phone">Phone:</label>
-            <input type="text" name="phone" id="phone" required />
-          </section>
-          <section>
+            <input type="text" name="phone" id="phone" class="border-2 rounded-md" required />
             <label for="age">Age:</label>
-            <input type="number" name="age" id="age" required />
-          </section>
-          <section>
+            <input type="number" name="age" id="age" class="border-2 rounded-md" required />
             <label for="description">Description:</label>
-            <textarea name="description" id="description" required></textarea>
-          </section>
-          <section>
+            <textarea name="description" id="description" class="border-2 rounded-md" required></textarea>
             <label for="password">Password:</label>
-            <input type="password" name="password" id="password" required />
-          </section>
-          <section>
+            <input type="password" name="password" id="password" class="border-2 rounded-md" required />
             <label for="repeatPassword">Repeat Password:</label>
             <input
               type="password"
               name="repeatPassword"
               id="repeatPassword"
+              class="border-2 rounded-md"
               required
             />
-          </section>
-          <section>
-            <button>Submit</button>
+            <div class="flex flex-col items-center">
+                <button class="bg-blue-900 text-white rounded-md p-4 mt-4 cursor-pointer w-[60%] hover:bg-blue-700 hover:scale-105">Submit</button>
+            </div>
           </section>
         </form>
       </article>
